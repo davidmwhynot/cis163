@@ -61,7 +61,7 @@ public class Lock {
 		try{
 
 			// open the data file
-			Scanner fileReader = new Scanner(new File(fileName)); 
+			Scanner fileReader = new Scanner(new File(fileName));
 
 			// read one int
 			correctCode = fileReader.next();
@@ -82,13 +82,12 @@ public class Lock {
 		PrintWriter out = null;
 		try {
 			out = new PrintWriter(new BufferedWriter(new FileWriter(fileName)));
-		} 
+		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		out.println(correctCode);
 		out.println(userEnteredCode);
-		out.close(); 
+		out.close();
 	}
 }
-
