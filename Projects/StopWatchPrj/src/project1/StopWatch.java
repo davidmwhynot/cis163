@@ -4,11 +4,11 @@ public class StopWatch {
 	private int minutes;
 	private int seconds;
 	private int milliseconds;
-	
+
 	public String toString() {
 		return "StopWatch [minutes=" + minutes + ", seconds" + seconds + ", milliseconds=" + milliseconds + "]";
 	}
-	
+
 	public StopWatch() {
 		super();
 	}
@@ -35,21 +35,26 @@ public class StopWatch {
 	public int getMinutes() {
 		return minutes;
 	}
+
 	public void setMinutes(int minutes) {
 		this.minutes = minutes;
 	}
+
 	public int getSeconds() {
 		return seconds;
 	}
+
 	public void setSeconds(int seconds) {
 		this.seconds = seconds;
 	}
+
 	public int getMilliseconds() {
 		return milliseconds;
 	}
+
 	public void setMilliseconds(int milliseconds) {
 		this.milliseconds = milliseconds;
 	}
-	
-	
+
+
 }
