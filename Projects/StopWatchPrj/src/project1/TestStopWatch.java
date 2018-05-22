@@ -12,7 +12,7 @@ public class TestStopWatch {
 	 * is functioning correctly.
 	 *
 	 */
-
+	 // TODO: add test case that tries to save to permission restricted directory (ie /root, /system, etc.)
 		// default constructor test
 		@Test
 		public void testDefaultConstructor() {
