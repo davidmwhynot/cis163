@@ -19,8 +19,29 @@ public class StopWatch {
 		if(startTime.matches("^(\\d+?:){0,2}\\d+?$")) {
 			// process input
 			StringTokenizer st = new StringTokenizer(startTime, ":");
-			while(st.hasMoreTokens()) {
-				System.out.println(st.nextToken());
+			if(st.hasMoreTokens()) {
+				int ms = st.nextToken();
+				if(0 <= ms && ms <= 999) {
+					milliseconds = ms;
+				} else {
+					throw new IllegalArgumentException();
+				}
+			}
+			if(st.hasMoreTokens()) {
+				int sec = st.nextToken();
+				if(0 <= sec && sec <= 59) {
+					seconds = sec;
+				} else {
+					throw new IllegalArgumentException();
+				}
+			}
+			if(st.hasMoreToken()) {
+				int min = st.nextToken();
+				if(0 <= min) {
+					minutes = min;
+				} else {
+					throw new IllegalArgumentException();
+				}
 			}
 		} else {
 			throw new IllegalArgumentException();
@@ -29,6 +50,7 @@ public class StopWatch {
 	public StopWatch(int ms) {
 		super();
 		milliseconds = ms;
+		seconds = sec;
 	}
 	public StopWatch(int sec, int ms) {
 		super();
@@ -52,7 +74,6 @@ public class StopWatch {
 	public void dec() {
 
 	}
-
 
 	public void add(int ms) {
 
