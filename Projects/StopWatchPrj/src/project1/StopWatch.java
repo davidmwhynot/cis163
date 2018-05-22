@@ -1,4 +1,4 @@
-// package project1;
+package project1;
 
 import java.io.*;
 import java.util.*;
@@ -49,36 +49,52 @@ public class StopWatch {
 	}
 
 	private void tryCreate(int min, int sec, int ms) {
-		if(0 <= ms && ms <= 999) {
-			milliseconds = ms;
+		if(!suspended) {
+			if(0 <= ms && ms <= 999) {
+				milliseconds = ms;
+			} else {
+				throw new IllegalArgumentException();
+			}
+			if(0 <= sec && sec <= 59) {
+				seconds = sec;
+			} else {
+				throw new IllegalArgumentException();
+			}
+			if(0 <= min) {
+				minutes = min;
+			} else {
+				throw new IllegalArgumentException();
+			}
 		} else {
-			throw new IllegalArgumentException();
-		}
-		if(0 <= sec && sec <= 59) {
-			seconds = sec;
-		} else {
-			throw new IllegalArgumentException();
-		}
-		if(0 <= min) {
-			minutes = min;
-		} else {
-			throw new IllegalArgumentException();
+			throw new RuntimeException();
 		}
 	}
 
 	public static int convertDown(int min, int sec, int ms) {
 		return (((min * 60) + sec) * 1000) + ms;
 	}
-	public static int[] convertUp(int ms) {
+	public static int[] convertUp(int ms) { // 61001 - min: 1, sec: 1, mil: 1
 		int[] temp = {ms / 60000, (ms % 60000) / 1000, (ms % 60000) % 1000};
 		return temp;
 	}
 
 	public void inc() {
-		int[] temp = convertUp(convertDown(minutes, seconds, milliseconds) + 1);
-		minutes = temp[0];
-		seconds = temp[1];
-		milliseconds = temp[2];
+		if(milliseconds == 999) {
+			if(seconds == 59) {
+				milliseconds = 0;
+				seconds = 0;
+				++minutes;
+			} else {
+				milliseconds = 0;
+				++seconds;
+			}
+		} else {
+			++milliseconds;
+		}
+		// int[] temp = convertUp(convertDown(minutes, seconds, milliseconds) + 1);
+		// minutes = temp[0];
+		// seconds = temp[1];
+		// milliseconds = temp[2];
 	}
 	public void dec() {
 		int newMS = convertDown(minutes, seconds, milliseconds) - 1;
@@ -94,10 +110,13 @@ public class StopWatch {
 
 	public void add(int ms) {
 		if(ms > 0) {
-			int[] temp = convertUp(convertDown(minutes, seconds, milliseconds) + ms);
-			minutes = temp[0];
-			seconds = temp[1];
-			milliseconds = temp[2];
+			for(int x = 0; x < ms; ++x) {
+				inc();
+			}
+			// int[] temp = convertUp(convertDown(minutes, seconds, milliseconds) + ms);
+			// minutes = temp[0];
+			// seconds = temp[1];
+			// milliseconds = temp[2];
 		} else {
 			throw new IllegalArgumentException();
 		}
@@ -168,18 +187,26 @@ public class StopWatch {
 		}
 	}
 
-	public void save(String fName) throws IOException {
-		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(fName)));
-		out.println(this.toString());
-		out.close();
+	public void save(String fName) {
+		try {
+			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(fName)));
+			out.println(this.toString());
+			out.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
-	public void load(String fName) throws IOException {
-		Scanner s = new Scanner(new File(fName));
-	 	StopWatch temp = new StopWatch(s.nextLine());
-		minutes = temp.getMinutes();
-		seconds = temp.getSeconds();
-		milliseconds = temp.getMilliseconds();
-		s.close();
+		public void load(String fName) {
+		try {
+			Scanner s = new Scanner(new File(fName));
+		 	StopWatch temp = new StopWatch(s.nextLine());
+			minutes = temp.getMinutes();
+			seconds = temp.getSeconds();
+			milliseconds = temp.getMilliseconds();
+			s.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void suspend(boolean flag) {

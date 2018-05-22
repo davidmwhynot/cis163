@@ -1,0 +1,19 @@
+{
+  "name": "cis163",
+  "version": "1.0.0",
+  "description": "GVSU CIS 163 Labs and Projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidmwhynot/cis163.git"
+  },
+  "author": "David Whynot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidmwhynot/cis163/issues"
+  },
+  "homepage": "https://github.com/davidmwhynot/cis163#readme"
+}
