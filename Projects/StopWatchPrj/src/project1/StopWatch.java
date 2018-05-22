@@ -65,32 +65,32 @@ public class StopWatch {
 		}
 	}
 
-	public static int convertDown(int min, int sec, int ms) {
+	private static int convertDown(int min, int sec, int ms) {
 		return (((min * 60) + sec) * 1000) + ms;
 	}
-	public static int[] convertUp(int ms) { // 61001 - min: 1, sec: 1, mil: 1
+	private static int[] convertUp(int ms) { // 61001 - min: 1, sec: 1, mil: 1
 		int[] temp = {ms / 60000, (ms % 60000) / 1000, (ms % 60000) % 1000};
 		return temp;
 	}
 
 	public void inc() {
 		if(!suspended) {
-			if(milliseconds == 999) {
-				if(seconds == 59) {
-					milliseconds = 0;
-					seconds = 0;
-					++minutes;
-				} else {
-					milliseconds = 0;
-					++seconds;
-				}
-			} else {
-				++milliseconds;
-			}
-			// int[] temp = convertUp(convertDown(minutes, seconds, milliseconds) + 1);
-			// minutes = temp[0];
-			// seconds = temp[1];
-			// milliseconds = temp[2];
+			// if(milliseconds == 999) {
+			// 	if(seconds == 59) {
+			// 		milliseconds = 0;
+			// 		seconds = 0;
+			// 		++minutes;
+			// 	} else {
+			// 		milliseconds = 0;
+			// 		++seconds;
+			// 	}
+			// } else {
+			// 	++milliseconds;
+			// }
+			int[] temp = convertUp(convertDown(minutes, seconds, milliseconds) + 1);
+			minutes = temp[0];
+			seconds = temp[1];
+			milliseconds = temp[2];
 		}
 	}
 	public void dec() {
