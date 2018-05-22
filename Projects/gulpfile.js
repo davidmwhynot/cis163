@@ -26,17 +26,3 @@ gulp.task('run', () => {
 		console.log(output);
 	});
 });
-// gulp.task('run', ['compile'], () => {
-// 	let output = '';
-// 	let dump = spawn('./runStopWatch.sh');
-// 	dump.stdout.on('data', (data) => {
-// 		let dumpOut = data.toString('utf-8');
-// 		output += dumpOut;
-// 	});
-// 	dump.stderr.on('data', (data) => {
-// 		console.error(data.toString('utf-8'));
-// 	});
-// 	dump.on('close', (code) => {
-// 		console.log(output);
-// 	});
-// });
