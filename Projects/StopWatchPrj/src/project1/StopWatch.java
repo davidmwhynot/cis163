@@ -140,8 +140,8 @@ public class StopWatch {
 	}
 	public void add(StopWatch sw) {
 		if(!suspended) {
-			this.sub(toString(sw.getMinutes(), sw.getSeconds(), sw.getMilliseconds()));
-			System.out.println("something different");
+			this.sub(convertUp(sw.getMinutes(), sw.getSeconds(), sw.getMilliseconds()));
+			this.add(2);
 			// int[] temp = convertUp(convertDown(minutes, seconds, milliseconds) + convertDown(sw.getMinutes(), sw.getSeconds(), sw.getMilliseconds()));
 			// minutes = temp[0];
 			// seconds = temp[1];
