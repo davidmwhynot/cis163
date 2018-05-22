@@ -37,17 +37,18 @@ public class TestStopWatch {
 
 		@Test
 		public void testConstructor() {
-			StopWatch s = new StopWatch(5, 10, 300);
+			StopWatch s;
+			s = new StopWatch(5, 10, 300);
 			assertEquals(s.toString(), "5:10:300");
 
-			s = new StopWatch("20:10:8");
-			assertEquals(s.toString(),"20:10:008");
-
-			s = new StopWatch("20:8");
-			assertEquals(s.toString(),"0:20:008");
-
-			s = new StopWatch("8");
-			assertEquals(s.toString(),"0:00:008");
+			 s = new StopWatch("20:10:8");
+			 assertEquals(s.toString(),"20:10:008");
+			
+			 s = new StopWatch("20:8");
+			 assertEquals(s.toString(),"0:20:008");
+			
+			 s = new StopWatch("8");
+			 assertEquals(s.toString(),"0:00:008");
 
 		}
 
