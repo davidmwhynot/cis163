@@ -43,12 +43,12 @@ public class StopWatchDriver {
 		con.add(swPanel);
 
 		btnPanel.setLayout(new FlowLayout());
-		btnPanel.setPreferredSize(new Dimension(1000, 100));
+		btnPanel.setPreferredSize(new Dimension(1000, 50));
 		btnPanel.add(addNewSW_btn);
 		btnPanel.add(suspend_btn);
 
 		swPanel.setLayout(new FlowLayout());
-		swPanel.setPreferredSize(new Dimension(1000, 700));
+		swPanel.setPreferredSize(new Dimension(1000, 750));
 		addNewSW_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				MyTimerPanel newTimer = new MyTimerPanel();
@@ -60,6 +60,11 @@ public class StopWatchDriver {
 		suspend_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				suspendState = !suspendState;
+				if(suspendState) {
+					swPanel.setBackground(Color.RED);
+				} else {
+					swPanel.setBackground(Color.GREEN);
+				}
 				mostRecentlyAddedSW.suspend(suspendState);
 			}
 		});

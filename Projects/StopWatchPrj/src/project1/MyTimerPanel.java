@@ -69,9 +69,12 @@ public class MyTimerPanel extends JPanel {
 		add(load_btn);
 		add(inc_btn);
 		add(dec_btn);
-		add(add_btn);
-		add(sub_btn);
-		add(addSub_inp);
+		add(addSub_pnl);
+		addSub_pnl.setLayout(new FlowLayout());
+		addSub_pnl.setPreferredSize(new Dimension(150, 80));
+		addSub_pnl.add(addSub_inp);
+		addSub_pnl.add(add_btn);
+		addSub_pnl.add(sub_btn);
 
 		start_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
