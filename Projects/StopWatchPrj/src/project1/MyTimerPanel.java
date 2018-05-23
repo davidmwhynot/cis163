@@ -14,7 +14,7 @@ public class MyTimerPanel extends JPanel {
 	private TimerListener timer;
 
 	private JPanel addSub_pnl;
-	
+
 	private JLabel time_lbl;
 
 	private JButton start_btn;
@@ -83,17 +83,18 @@ public class MyTimerPanel extends JPanel {
 				javaTimer.stop();
 			}
 		});
-		stop_btn.addActionListener(new ActionListener() {
+		reset_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				sw.setMinutes(0);
 				sw.setSeconds(0);
 				sw.setMilliseconds(0);
+				update();
 			}
 		});
 		save_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				fcReturnVal = fileChooser.showDialog(
-					 StopWatchDriver.this,
+					 null,
 					 "Save"
 				 );
 				if(fcReturnVal == JFileChooser.APPROVE_OPTION) {
@@ -105,7 +106,7 @@ public class MyTimerPanel extends JPanel {
 		load_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				fcReturnVal = fileChooser.showDialog(
-					StopWatchDriver.this,
+					null,
 					"Load"
 				);
 				if(fcReturnVal == JFileChooser.APPROVE_OPTION) {
