@@ -39,7 +39,7 @@ public class StopWatch {
 	/*******************************************************************
 	 * Creates a stopwatch with given milliseconds value.
 	 * @author David Whynot
-	 * @param ms
+	 * @param ms	milliseconds to initialize stopwatch with
 	*******************************************************************/
 	public StopWatch(int ms) {
 		super();
