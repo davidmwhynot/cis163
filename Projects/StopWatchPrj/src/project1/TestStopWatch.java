@@ -7,13 +7,13 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class TestStopWatch {
-	/*********************************************************************
-	 *
-	 * The following are simple random JUnit test cases... After talking with your
-	 * instructor, create many, many more that shows that your code is functioning
-	 * correctly.
-	 *
-	 */
+/*********************************************************************
+ *
+ * The following are simple random JUnit test cases... After talking with your
+ * instructor, create many, many more that shows that your code is functioning
+ * correctly.
+ *
+ */
 	// TODO: add test case that tries to save to permission restricted directory (ie
 	// /root, /system, etc.)
 	// default constructor test

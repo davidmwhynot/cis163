@@ -10,11 +10,13 @@ public class StopWatchDriver {
 	private JFrame ui;
 	private JButton addNewSW_btn = new JButton("Add New StopWatch");
 	public StopWatchDriver() {
-		JFrame mainFrame = new JFrame("StopWatch | Project 1 | CIS 163");
-    mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    mainFrame.setVisible(true);
-    mainFrame.setResizable(true);
-    mainFrame.setLayout(new FlowLayout());
+		JFrame mainFrame = new JFrame(
+			"StopWatch | Project 1 | CIS 163"
+		);
+	    mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    mainFrame.setVisible(true);
+	    mainFrame.setResizable(true);
+	    mainFrame.setLayout(new FlowLayout());
 		mainFrame.setPreferredSize(new Dimension(800, 600));
 		Container con = mainFrame.getContentPane();
 		con.add(addNewSW_btn);
@@ -25,7 +27,13 @@ public class StopWatchDriver {
 	}
 	public static void main(String[] args) {
 		// main method -- thread controller
-		Javax.swing.swingUtilities.invokeLater(new Runnable() {
+		System.out.println("testing");
+		StopWatch sw1 = new StopWatch("1:0:0");
+		StopWatch sw2 = new StopWatch("1:0");
+		sw1.add(sw2);
+		System.out.println(sw1.toString());
+
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				new StopWatchDriver();
