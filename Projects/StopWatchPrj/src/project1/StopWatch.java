@@ -98,7 +98,7 @@ public class StopWatch {
 			if(milliseconds == 0) {
 				if(seconds == 0) {
 					if(minutes == 0) {
-						throw new RuntimeException();
+						throw new IllegalArgumentException();
 					} else {
 						--minutes;
 						seconds = 59;
@@ -111,15 +111,6 @@ public class StopWatch {
 			} else {
 				--milliseconds;
 			}
-			// int newMS = convertDown(minutes, seconds, milliseconds) - 1;
-			// if(newMS >= 0) {
-			// 	int[] temp = convertUp(newMS);
-			// 	minutes = temp[0];
-			// 	seconds = temp[1];
-			// 	milliseconds = temp[2];
-			// } else {
-			// 	throw new RuntimeException();
-			// }
 		}
 	}
 
@@ -129,10 +120,6 @@ public class StopWatch {
 				for(int x = 0; x < ms; ++x) {
 					inc();
 				}
-				// int[] temp = convertUp(convertDown(minutes, seconds, milliseconds) + ms);
-				// minutes = temp[0];
-				// seconds = temp[1];
-				// milliseconds = temp[2];
 			} else {
 				throw new IllegalArgumentException();
 			}
@@ -141,10 +128,6 @@ public class StopWatch {
 	public void add(StopWatch sw) {
 		if(!suspended) {
 			this.add(convertDown(sw.getMinutes(), sw.getSeconds(), sw.getMilliseconds()));
-			// int[] temp = convertUp(convertDown(minutes, seconds, milliseconds) + convertDown(sw.getMinutes(), sw.getSeconds(), sw.getMilliseconds()));
-			// minutes = temp[0];
-			// seconds = temp[1];
-			// milliseconds = temp[2];
 		}
 	}
 
