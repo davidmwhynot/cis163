@@ -13,8 +13,6 @@ public class MyTimerPanel extends JPanel {
 
 	private TimerListener timer;
 
-	private JPanel addSub_pnl;
-	
 	private JLabel time_lbl;
 
 	private JButton start_btn;
@@ -40,8 +38,6 @@ public class MyTimerPanel extends JPanel {
 		sw = new StopWatch();
 		timer = new TimerListener();
 		javaTimer = new Timer(INCREMENT, timer);
-
-		addSub_pnl = new JPanel();
 
 		time_lbl = new JLabel("0:00:000");
 

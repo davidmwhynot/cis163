@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
  *
  * @author David Whynot, Daniel Pfahler
  * @version 1.1.0
-***********************************************************************/
+ ***********************************************************************/
 
 public class StopWatch {
 
@@ -37,7 +37,7 @@ public class StopWatch {
 	 * Create a default stopwatch
 	 *
 	 * @author David Whynot
-	*******************************************************************/
+	 *******************************************************************/
 	public StopWatch() {
 		super();
 		tryCreate(0, 0, 0);
@@ -60,7 +60,7 @@ public class StopWatch {
 	 * @author David Whynot
 	 * @param sec
 	 * @param ms
-	*******************************************************************/
+	 *******************************************************************/
 	public StopWatch(int sec, int ms) {
 		super();
 		tryCreate(0, sec, ms);
@@ -84,7 +84,7 @@ public class StopWatch {
 	 *
 	 * @author David Whynot
 	 * @param startTime
-	*******************************************************************/
+	 *******************************************************************/
 	public StopWatch(String startTime) {
 		super();
 		if (startTime.matches("^(\\d+?:){0,2}\\d+?$")) {
@@ -116,7 +116,7 @@ public class StopWatch {
 	 * @param min
 	 * @param sec
 	 * @param ms
-	*******************************************************************/
+	 *******************************************************************/
 	private void tryCreate(int min, int sec, int ms) {
 
 		/*
@@ -172,7 +172,7 @@ public class StopWatch {
 	}
 
 	/*******************************************************************
-	 * Increments the this StopWatch by 1 millisecond.
+	 * Increments the “this” StopWatch by 1 millisecond.
 	 *
 	 * @author David Whynot
 	 *******************************************************************/
@@ -194,7 +194,7 @@ public class StopWatch {
 	}
 
 	/*******************************************************************
-	 * Decrements the this StopWatch by 1 millisecond.
+	 * Decrements the “this” StopWatch by 1 millisecond.
 	 *
 	 * @author David Whynot
 	 *******************************************************************/
@@ -220,7 +220,7 @@ public class StopWatch {
 	}
 
 	/*******************************************************************
-	 * Adds the number of milliseconds to this StopWatch object.
+	 * Adds the number of milliseconds to “this” StopWatch object.
 	 *
 	 * @author David Whynot
 	 * @param ms
@@ -250,7 +250,7 @@ public class StopWatch {
 	}
 
 	/*******************************************************************
-	 * Subtracts the number of milliseconds from this StopWatch object.
+	 * Subtracts the number of milliseconds from “this” StopWatch object.
 	 *
 	 * @author David Whynot
 	 * @param ms
@@ -274,7 +274,7 @@ public class StopWatch {
 	}
 
 	/*******************************************************************
-	 * Subtracts the this StopWatch object.
+	 * Subtracts the “this” StopWatch object.
 	 *
 	 * @author David Whynot
 	 * @param sw
