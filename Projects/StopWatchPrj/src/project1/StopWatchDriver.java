@@ -20,26 +20,17 @@ public class StopWatchDriver {
 		mainFrame.setPreferredSize(new Dimension(800, 600));
 		Container con = mainFrame.getContentPane();
 		con.add(addNewSW_btn);
-		// addNewSW_btn.addActionListener(new ActionListener(ActionEvent e) {
-		//
-		// });
+		addNewSW_btn.addActionListener(new ActionListener() {
+			@Override
+			public void ActionPerformed(ActionEvent ae) {
+
+			}
+		});
 		mainFrame.pack();
 	}
 	public static void main(String[] args) {
 		// main method -- thread controller
-		System.out.println("testing");
-		StopWatch sw1 = new StopWatch("1:0:0");
-		StopWatch sw2 = new StopWatch("1:0");
-		sw1.add(sw2);
-		System.out.println(sw1.toString());
-
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new StopWatchDriver();
-			}
-		});
-		// StopWatchDriver swd = new StopWatchDriver();
+		StopWatchDriver swd = new StopWatchDriver();
 	}
 	private JPanel stopWatchPanelFactory() {
 		return new JPanel();

@@ -26,22 +26,55 @@ public class StopWatch {
 	is not allowed! */
 	private static boolean suspended = false;
 
+
+	/*******************************************************************
+	 * Create a default stopwatch
+	 * @author David Whynot
+	*******************************************************************/
 	public StopWatch() {
 		super();
 		tryCreate(0, 0, 0);
 	}
+
+	/*******************************************************************
+	 * Creates a stopwatch with given milliseconds value.
+	 * @author David Whynot
+	 * @param ms
+	*******************************************************************/
 	public StopWatch(int ms) {
 		super();
 		tryCreate(0, 0, ms);
 	}
+
+	/*******************************************************************
+	 * Creates a stopwatch with given seconds and milliseconds values.
+	 * @author David Whynot
+	 * @param sec
+	 * @param ms
+	*******************************************************************/
 	public StopWatch(int sec, int ms) {
 		super();
 		tryCreate(0, sec, ms);
 	}
+
+	/*******************************************************************
+	 * Creates a stopwatch with given minutes, seconds, and milliseconds
+	 * values.
+	 * @author David Whynot
+	 * @param min
+	 * @param sec
+	 * @param ms
+	*******************************************************************/
 	public StopWatch(int min, int sec, int ms) {
 		super();
 		tryCreate(min, sec, ms);
 	}
+
+	/*******************************************************************
+	 * Creates a stopwatch from a time string.
+	 * @author David Whynot
+	 * @param startTime
+	*******************************************************************/
 	public StopWatch(String startTime) {
 		super();
 		if (startTime.matches("^(\\d+?:){0,2}\\d+?$")) {
@@ -66,6 +99,14 @@ public class StopWatch {
 		}
 	}
 
+
+	/*******************************************************************
+	 * Trys to create a with the given values.
+	 * @author David Whynot
+	 * @param min
+	 * @param sec
+	 * @param ms
+	*******************************************************************/
 	private void tryCreate(int min, int sec, int ms) {
 
 		/* set the fields to the given values if they are within the
@@ -87,12 +128,29 @@ public class StopWatch {
 		}
 	}
 
+
+	/*******************************************************************
+	 * Converts the given stopwatch paramaters down to milliseconds
+	 * @author David Whynot
+	 * @param min
+	 * @param sec
+	 * @param ms
+	 * @return time in milliseconds
+	*******************************************************************/
 	private static int convertDown(int min, int sec, int ms) {
 
 		// Example:
 		// min: 1, sec: 1, mil: 1 - 61001
 		return (((min * 60) + sec) * 1000) + ms;
 	}
+
+	/*******************************************************************
+	 * Converts a given value in milliseconds up to an array of values.
+	 * @author David Whynot
+	 * @param ms
+	 * @return array with elements 0, 1, and 2 being mins, secs, and ms
+	 * respectively
+	*******************************************************************/
 	private static int[] convertUp(int ms) {
 
 		// Example:
@@ -106,6 +164,11 @@ public class StopWatch {
 		return temp;
 	}
 
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	*******************************************************************/
 	public void inc() {
 		if (!suspended) {
 			if (milliseconds == 999) {
@@ -122,6 +185,11 @@ public class StopWatch {
 			}
 		}
 	}
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	*******************************************************************/
 	public void dec() {
 		if (!suspended) {
 			if (milliseconds == 0) {
@@ -143,6 +211,12 @@ public class StopWatch {
 		}
 	}
 
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param ms
+	*******************************************************************/
 	public void add(int ms) {
 		if (!suspended) {
 			if (ms > 0) {
@@ -154,6 +228,12 @@ public class StopWatch {
 			}
 		}
 	}
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param sw
+	*******************************************************************/
 	public void add(StopWatch sw) {
 		if (!suspended) {
 			this.add(convertDown(
@@ -164,6 +244,12 @@ public class StopWatch {
 		}
 	}
 
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param ms
+	*******************************************************************/
 	public void sub(int ms) {
 		if (!suspended) {
 			if (ms > 0) {
@@ -182,6 +268,12 @@ public class StopWatch {
 			}
 		}
 	}
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param sw
+	*******************************************************************/
 	public void sub(StopWatch sw) {
 		if (!suspended) {
 			int newMS =
@@ -203,6 +295,12 @@ public class StopWatch {
 	}
 
 
+
+	/*******************************************************************
+	 * @author David Whynot
+	 * @see java.lang.Object#equals(java.lang.Object)
+	*******************************************************************/
+	@Override
 	public boolean equals(Object o) {
 		if (o != null && o instanceof StopWatch) {
 			return (
@@ -216,6 +314,14 @@ public class StopWatch {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param sw1
+	 * @param sw2
+	 * @return
+	*******************************************************************/
 	public static boolean equals(Object sw1, Object sw2) {
 		if (
 			(sw1 != null) &&
@@ -238,6 +344,13 @@ public class StopWatch {
 		}
 	}
 
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param o
+	 * @return
+	*******************************************************************/
 	public int compareTo(Object o) {
 		if (o != null && o instanceof StopWatch) {
 			int otherMS = convertDown(
@@ -258,6 +371,12 @@ public class StopWatch {
 		}
 	}
 
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param fName
+	*******************************************************************/
 	public void save(String fName) {
 		try {
 			PrintWriter out = new PrintWriter(
@@ -270,6 +389,12 @@ public class StopWatch {
 			System.exit(1);
 		}
 	}
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param fName
+	*******************************************************************/
 	public void load(String fName) {
 		if (!suspended) {
 			try {
@@ -286,36 +411,86 @@ public class StopWatch {
 		}
 	}
 
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param flag
+	*******************************************************************/
 	public static void suspend(boolean flag) {
 		suspended = flag;
 	}
 
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @return
+	*******************************************************************/
 	public int getMinutes() {
 		return minutes;
 	}
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @return
+	*******************************************************************/
 	public int getSeconds() {
 		return seconds;
 	}
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @return
+	*******************************************************************/
 	public int getMilliseconds() {
 		return milliseconds;
 	}
 
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param n
+	*******************************************************************/
 	public void setMinutes(int n) {
 		if (!suspended) {
 			minutes = n;
 		}
 	}
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param n
+	*******************************************************************/
 	public void setSeconds(int n) {
 		if (!suspended) {
 			seconds = n;
 		}
 	}
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @param n
+	*******************************************************************/
 	public void setMilliseconds(int n) {
 		if (!suspended) {
 			milliseconds = n;
 		}
 	}
 
+
+
+	/*******************************************************************
+	 *
+	 * @author David Whynot
+	 * @see java.lang.Object#toString()
+	*******************************************************************/
+	@Override
 	public String toString() {
 		return String.format(
 				"%d:%02d:%03d",
