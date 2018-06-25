@@ -24,7 +24,6 @@ public class MyTimerPanel extends JPanel {
 	private JButton add_btn;
 	private JButton sub_btn;
 	private JButton reset_btn;
-	private JButton _btn;
 
 	private JTextField addSub_inp;
 
