@@ -1,4 +1,4 @@
-package rentalStorePrjGIVETOSTUDENTS;
+package project4;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class RentalStoreGUI extends JFrame implements ActionListener {
-
+	// declare GUI components (menu items, buttons, etc.) needed
 	/**
 	 * Holds menu bar
 	 */
@@ -46,15 +46,16 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 	/** Scroll pane */
 	//private JScrollPane scrollList;
 
+	// constructor method that prepares the GUI
 	public RentalStoreGUI() {
 
 		//adding menu bar and menu items
 		menus = new JMenuBar();
 		fileMenu = new JMenu("File");
 		actionMenu = new JMenu("Action");
-		openSerItem = new JMenuItem("Open File");
+		openSerItem = new JMenuItem("Open Database");
 		exitItem = new JMenuItem("Exit");
-		saveSerItem = new JMenuItem("Save File");
+		saveSerItem = new JMenuItem("Save Database");
 		openTextItem = new JMenuItem("Open Text");
 		saveTextItem = new JMenuItem("Save Text");
 		rentDVD = new JMenuItem("Rent DVD");
@@ -97,27 +98,30 @@ public class RentalStoreGUI extends JFrame implements ActionListener {
 
 	}
 
+	// event handlers and other methods needed to build the GUI
 	public void actionPerformed(ActionEvent e) {
 
-		Object comp = e.getSource();
+		Object src = e.getSource();
 
-		if (openSerItem == comp || openTextItem == comp) {
+		if (openSerItem == src || openTextItem == src) {
 			JFileChooser chooser = new JFileChooser();
 			int status = chooser.showOpenDialog(null);
 			if (status == JFileChooser.APPROVE_OPTION) {
 				String filename = chooser.getSelectedFile().getAbsolutePath();
-				if (openSerItem == comp)
+				if (openSerItem == src) {
 					list.loadFromSerializable(filename);
+				}
 			}
 		}
 
-		if (saveSerItem == comp || saveTextItem == comp) {
+		if (saveSerItem == src || saveTextItem == src) {
 			JFileChooser chooser = new JFileChooser();
 			int status = chooser.showSaveDialog(null);
 			if (status == JFileChooser.APPROVE_OPTION) {
 				String filename = chooser.getSelectedFile().getAbsolutePath();
-				if (saveSerItem == e.getSource())
+				if (saveSerItem == e.getSource()) {
 					list.saveAsSerializable(filename);
+				}
 			}
 		}
 

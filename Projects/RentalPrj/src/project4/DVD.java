@@ -1,4 +1,4 @@
-package rentalStorePrjGIVETOSTUDENTS;
+package project4;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;

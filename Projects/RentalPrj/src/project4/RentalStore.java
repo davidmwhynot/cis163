@@ -1,4 +1,4 @@
-package rentalStorePrjGIVETOSTUDENTS;
+package project4;
 
 import javax.swing.*;
 import java.io.*;
@@ -26,7 +26,7 @@ public class RentalStore extends AbstractListModel {
 		return listDVDs.get(i);
 	}
 
-	public Object getElementAt(int arg0) {	
+	public Object getElementAt(int arg0) {
 
 			//return "Happy";
 
@@ -56,8 +56,8 @@ public class RentalStore extends AbstractListModel {
 			os.close();
 		}
 		catch (IOException ex) {
-			JOptionPane.showMessageDialog(null,"Error in saving db");
-
+			JOptionPane.showMessageDialog(null, "Error in saving db");
+			ex.printStackTrace();
 		}
 	}
 
@@ -72,6 +72,7 @@ public class RentalStore extends AbstractListModel {
 		}
 		catch (Exception ex) {
 			JOptionPane.showMessageDialog(null,"Error in loading db");
+			ex.printStackTrace();
 		}
 	}
 }

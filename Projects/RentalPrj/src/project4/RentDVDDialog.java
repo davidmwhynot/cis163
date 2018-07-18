@@ -1,4 +1,4 @@
-package rentalStorePrjGIVETOSTUDENTS;
+package project4;
 
 import javax.swing.*;
 import java.awt.*;
