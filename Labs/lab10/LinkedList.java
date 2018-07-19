@@ -5,7 +5,7 @@ public class LinkedList {
 
 	public LinkedList() {
 		displayCount = 0;
-		top = new Node();
+		top = null;
 	}
 	public LinkedList(Node n) {
 		displayCount = 0;
@@ -14,53 +14,92 @@ public class LinkedList {
 
 	public void push(String data) {
 		top = new Node(data, top);
-		// if(top != null) {
-		// 	Node temp = top;
-		// 	Node last = null;
-		// 	while(temp != null) {
-		// 		last = temp;
-		// 		temp = temp.getNext();
-		// 	}
-		// 	last.setNext(n);
-		// } else {
-		// 	top = n;
-		// }
 	}
 	public String pop() {
 		Node temp = top;
 		top = top.getNext();
 		return temp.getData();
-		// if(top != null) {
-		// 	Node temp = top;
-		// 	Node last = null;
-		// 	while(temp != null) {
-		// 		if(temp.getNext() == null) {
-		// 			last.setNext(null);
-		// 			return temp;
-		// 		}
-		// 		last = temp;
-		// 		temp = temp.getNext();
-		// 	}
-		// 	return null;
-		// } else {
-		// 	return null;
-		// }
 	}
-	// public int getLen() {
-	// 	// TODO
-	// }
-	// public void insertBefore(int index, String data) {
-	// 	// TODO
-	// }
-	// public void insertAfter(int index, String data) {
-	// 	// TODO
-	// }
-	// public String removeTop() {
-	// 	// TODO
-	// }
-	// public boolean delAt(int index) {
-	// 	// TODO
-	// }
+	public int getLen() {
+		// TODO
+		int count = 0;
+		Node temp = top;
+		while(temp != null) {
+			++count;
+			temp = temp.getNext();
+		}
+		return count;
+	}
+	public void insertBefore(int index, String data) {
+		if(index < 0 || index > this.getLen()) {
+			throw new IllegalArgumentException();
+		}
+		if(top == null && index == 0) {
+			top = new Node(data);
+		} else if(top == null && index != 0) {
+			throw new IllegalArgumentException();
+		} else if(top != null && index == 0) {
+			this.push(data);
+		} else {
+			Node temp = top;
+			Node last = null;
+			for(int i = 0; i < index; ++i) {
+				last = temp;
+				temp = temp.getNext();
+			}
+			last.setNext(new Node(data, temp));
+		}
+	}
+	public void insertAfter(int index, String data) {
+		if(index < 0 || index > this.getLen()) {
+			throw new IllegalArgumentException();
+		}
+		if(top == null && index == 0) {
+			top = new Node(data);
+		} else if(top == null && index != 0) {
+			throw new IllegalArgumentException();
+		} else if(top != null && index == 0) {
+			Node temp = top.getNext();
+			top.setNext(new Node(data, temp));
+		} else {
+			Node temp = top;
+			Node last = null;
+			for(int i = 0; i <= index; ++i) {
+				last = temp;
+				temp = temp.getNext();
+			}
+			last.setNext(new Node(data, temp));
+		}
+	}
+	public String removeTop() {
+		return this.pop();
+	}
+	public boolean delAt(int index) {
+		if(index < 0 || index >= this.getLen()) {
+			return false;
+			// throw new IllegalArgumentException();
+		}
+		if(top == null && index == 0) {
+			return false;
+			// throw new IllegalArgumentException();
+		} else if(top == null && index != 0) {
+			return false;
+			// throw new IllegalArgumentException();
+		} else if(top != null && index == 0) {
+			Node temp = top.getNext();
+			top.setNext(temp.getNext());
+			return true;
+		} else {
+			Node temp = top;
+			Node last = null;
+			for(int i = 0; i < index; ++i) {
+				last = temp;
+				temp = temp.getNext();
+			}
+			last.setNext(temp.getNext());
+			return true;
+		}
+	}
 
 	public Node getTop() {
 		return top;
@@ -70,10 +109,11 @@ public class LinkedList {
 	}
 	public void display() {
 		Node temp = top;
-		System.out.println("================ " + ++displayCount + ": LIST ================");
-		while (temp != null) {
-			System.out.println(temp.getData());
+		System.out.println("\n\n ================ " + ++displayCount + ": LIST ================ ");
+		while(temp != null) {
+			System.out.println("\t\t$: " + temp.getData());
 			temp = temp.getNext();
 		}
+		System.out.println("\n");
 	}
 }
