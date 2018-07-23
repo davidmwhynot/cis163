@@ -19,17 +19,12 @@ public class DNode {
 		this.next = next;
 		this.prev = null;
 	}
-	// FIXME
-	// public DNode(String data, DNode prev) {
-	// 	this.data = data;
-	// 	this.next = null;
-	// 	this.prev = prev;
-	// }
 	public DNode(String data, DNode next, DNode prev) {
 		this.data = data;
 		this.next = next;
 		this.prev = prev;
 	}
+
 
 	public String getData() {
 		return data;
@@ -37,12 +32,17 @@ public class DNode {
 	public DNode getNext() {
 		return next;
 	}
-	// TODO
+	public DNode getPrev() {
+		return prev;
+	}
 
 	public void setData(String s) {
 		data = s;
 	}
 	public void setNext(DNode n) {
 		next = n;
+	}
+	public void setPrev(DNode n) {
+		prev = n;
 	}
 }

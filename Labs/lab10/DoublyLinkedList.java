@@ -4,30 +4,33 @@ public class DoublyLinkedList {
 	private DNode top;
 
 	public DoublyLinkedList() {
-		// TODO
 		displayCount = 0;
 		top = null;
 	}
 	public DoublyLinkedList(DNode n) {
-		// TODO
 		displayCount = 0;
 		top = n;
 	}
 
 	public void push(String data) {
-		// TODO
-		top = new DNode(data, top);
+		if(top != null) {
+			top = new DNode(data, top);
+			top.getNext().setPrev(top);
+		} else {
+			top = new DNode(data, top);
+		}
 	}
 
 	public String pop() {
-		// TODO
 		DNode temp = top;
 		top = top.getNext();
+		if(top != null) {
+			top.setPrev(null);
+		}
 		return temp.getData();
 	}
 
 	public int getLen() {
-		// TODO
 		int count = 0;
 		DNode temp = top;
 		while(temp != null) {
@@ -38,7 +41,6 @@ public class DoublyLinkedList {
 	}
 
 	public void insertBefore(int index, String data) {
-		// TODO
 		if(index < 0 || index > this.getLen()) {
 			throw new IllegalArgumentException();
 		}
@@ -50,12 +52,12 @@ public class DoublyLinkedList {
 			this.push(data);
 		} else {
 			DNode temp = top;
-			DNode last = null;
 			for(int i = 0; i < index; ++i) {
-				last = temp;
 				temp = temp.getNext();
 			}
-			last.setNext(new DNode(data, temp));
+			DNode newNode = new DNode(data, temp, temp.getPrev());
+			temp.getPrev().setNext(newNode);
+			temp.setPrev(newNode);
 		}
 	}
 
